@@ -18,5 +18,18 @@ class Post(models.Model):
     def like_count(self):
         return self.liked.all().count()
     
+    @property
+    def get_photos(self):
+        return self.photo.all()
+
     class Meta:
         ordering = ("-created_at",)
+
+
+class Photo(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="photo")
+    image = models.ImageField(upload_to="photos")
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.post.title} - {self.pk}"

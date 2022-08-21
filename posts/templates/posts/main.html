@@ -24,7 +24,7 @@
             <h5 class="modal-title" id="addPostLabel">Create Post</h5>
             <button
                 type="button"
-                class="close"
+                class="close add-modal-close"
                 data-dismiss="modal"
                 aria-label="Close"
             >
@@ -37,12 +37,20 @@
                 {{form|crispy}}
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <button type="button" class="btn btn-danger add-modal-close" data-dismiss="modal">
                         close
                     </button>
-                    <button type="submit" class="btn btn-primary">add</button>
+                    <button type="submit" class="btn btn-primary" id="add-btn">add</button>
                 </div>
             </form>
+
+            <form action="{% url 'posts:image-upload' %}" class="dz dropzone not-visible">
+                  <div class="fallback">
+                    <input name="file" type="file" multiple />
+                  </div>
+            </form>
+                
+
         </div>
         
         </div>
